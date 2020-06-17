@@ -33,7 +33,7 @@ export default {
    * @praam {function} success 唤起成功回调
    * @param {function} fial 唤起失败回调
    * @param {number} timeout 唤起超时，默认500ms
-   * @param {string} type default: auto; iframe|location|link|intent
+   * @param {string} way default: auto; iframe|location|link|intent
    */
   open: function (options) {
     if (typeof options === 'string') {
