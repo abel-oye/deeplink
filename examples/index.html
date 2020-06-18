@@ -13,9 +13,23 @@
     <script src="../dist/deeplink.js"></script>
     <script>
         document.write('userAgent: ' + window.navigator.userAgent + '<br>')
-        document.write(JSON.stringify(deeplink.browser))
+        document.write(JSON.stringify(Deeplink.browser, null, 4))
     </script>
+    <button id="jump">click me</button>
+    <script>
+        var dp = new Deeplink({
+            schemeLink: 'suning://m.suning.com/index?adTypeCode=1002&adId=https%3A%2F%2Fcuxiao.m.suning.com%2Fscms%2Fm0522laptopapp.html%3Futm_source%3Ddsp-yy-qt9-o1-ad%26utm_medium%3Dab-zt8-j12c1%26utm_campaign%3D%252C3%252C%26utm_term%3DgiLprxgvcwd2bsan6YCMl03Bcfc7GYMF%26adtype%3D7&utm_source=dsp-yy-qt9-o1-ad&utm_medium=ab-zt8-j12c1&utm_campaign=%2C3%2C&utm_term=giLprxgvcwd2bsan6YCMl03Bcfc7GYMF&adtype=7',
+            // downloadLink: 'https://cuxiao.m.suning.com/scms/m0522laptopapp.html?utm_source=dsp-yy-qt9-o1-ad&utm_medium=ab-zt8-j12c1&utm_campaign=%2C3%2C&utm_term=giLprxgvcwd2bsan6YCMl03Bcfc7GYMF&adtype=7',
+            fail: function () {
+                alert('唤起失败')
+            },
+            success() {
+                alert('唤起成功')
+            }
+        })
 
+        dp.bind('#jump')
+    </script>
 </body>
 
 </html>

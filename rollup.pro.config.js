@@ -1,19 +1,18 @@
 // rollup.config.js
-var babel = require('rollup-plugin-babel');
+const babel = require('rollup-plugin-babel');
+const uglify = require('rollup-plugin-uglify');
+const pkg = require('package.json');
 
 export default {
-  input: 'src/index.js',
-
+  entry: 'src/index.js',
+  format: 'umd',
+  moduleName: 'Deeplink',
   plugins: [
+    uglify.uglify(),
     babel({
       exclude: 'node_modules/**' // only transpile our source code
     })
   ],
-  output: [
-    {
-      file: 'dist/deeplink.js', // equivalent to --output
-      format: 'umd',
-      name: 'deeplink'
-    }
-  ]
+  banner: `/* deeplink.js Version: ${pkg.version} */`,
+  dest: 'dist/deeplink.js' // equivalent to --output
 };
